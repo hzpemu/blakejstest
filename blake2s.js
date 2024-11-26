@@ -2,7 +2,7 @@
 // Adapted from the reference implementation in RFC7693
 // Ported to Javascript by DC - https://github.com/dcposch
 
-const util = require('./util')
+//const util = require('./util')
 
 // Little-endian byte access.
 // Expects a Uint8Array and an index
@@ -323,7 +323,8 @@ function blake2sFinal (ctx) {
 function blake2s (input, key, outlen) {
   // preprocess inputs
   outlen = outlen || 32
-  input = util.normalizeInput(input)
+  //input = util.normalizeInput(input)
+  input = normalizeInput(input)//20241126fix
 
   // do the math
   const ctx = blake2sInit(outlen, key)
@@ -341,7 +342,8 @@ function blake2s (input, key, outlen) {
 // - outlen - optional output length in bytes, default 64
 function blake2sHex (input, key, outlen) {
   const output = blake2s(input, key, outlen)
-  return util.toHex(output)
+  //return util.toHex(output)
+  return toHex(output)//20241126fix
 }
 
 module.exports = {
