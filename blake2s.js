@@ -324,7 +324,7 @@ function blake2s (input, key, outlen) {
   // preprocess inputs
   outlen = outlen || 32
   //input = util.normalizeInput(input)
-  input = window.util.normalizeInput(input)//20241126fix
+  input = window.utilblakeutil.normalizeInput(input)//20241126fix
 
   // do the math
   const ctx = blake2sInit(outlen, key)
@@ -343,7 +343,7 @@ function blake2s (input, key, outlen) {
 function blake2sHex (input, key, outlen) {
   const output = blake2s(input, key, outlen)
   //return util.toHex(output)
-  return window.util.toHex(output)//20241126fix
+  return window.utilblakeutil.toHex(output)//20241126fix
 }
 
 //module.exports = {
