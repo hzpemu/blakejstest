@@ -368,4 +368,4 @@ window.utilblake2b = {
   blake2bInit: blake2bInit,
   blake2bUpdate: blake2bUpdate,
   blake2bFinal: blake2bFinal
-}
+};
