@@ -5,7 +5,9 @@ function normalizeInput (input) {
   let ret
   if (input instanceof Uint8Array) {
     ret = input
-  } else if (typeof input === 'string') {
+  } else if (input instanceof ArrayBuffer) {
+    ret = new Uint8Array(input); // 如果是 ArrayBuffer，转换为 Uint8Array
+  }else if (typeof input === 'string') {
     const encoder = new TextEncoder()
     ret = encoder.encode(input)
   } else {
