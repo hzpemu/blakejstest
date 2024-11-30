@@ -2,7 +2,7 @@
 // Adapted from the reference implementation in RFC7693
 // Ported to Javascript by DC - https://github.com/dcposch
 
-const util = require('./util')
+//const util = require('./util')
 
 // 64-bit unsigned addition
 // Sets v[a,a+1] += v[b,b+1]
@@ -327,12 +327,16 @@ function blake2bFinal (ctx) {
 function blake2b (input, key, outlen, salt, personal) {
   // preprocess inputs
   outlen = outlen || 64
-  input = util.normalizeInput(input)
+  //input = util.normalizeInput(input)
+  input =  window.utilblakeutil.normalizeInput(input)
+ 
   if (salt) {
-    salt = util.normalizeInput(salt)
+   // salt = util.normalizeInput(salt)
+    salt = window.utilblakeutil.normalizeInput(salt)
   }
   if (personal) {
-    personal = util.normalizeInput(personal)
+   // personal = util.normalizeInput(personal)
+    personal =  window.utilblakeutil.normalizeInput(personal)
   }
 
   // do the math
@@ -353,10 +357,12 @@ function blake2b (input, key, outlen, salt, personal) {
 // - personal - optional personal bytes, string, Buffer or Uint8Array
 function blake2bHex (input, key, outlen, salt, personal) {
   const output = blake2b(input, key, outlen, salt, personal)
-  return util.toHex(output)
+ // return util.toHex(output)
+  window.utilblakeutil.toHex(output)//20241130fix
 }
 
-module.exports = {
+//module.exports = {
+window.utilblake2b = { 
   blake2b: blake2b,
   blake2bHex: blake2bHex,
   blake2bInit: blake2bInit,
